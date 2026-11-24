@@ -2,69 +2,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup Page</title>
+    <title>E-Commerce Website</title>
 
     <style>
         body {
             background-color: lightblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            text-align: center;
             font-family: Arial;
         }
 
-        .container {
+        .product {
             background-color: white;
-            padding: 30px;
+            display: inline-block;
+            padding: 20px;
+            margin: 15px;
             border-radius: 10px;
-            text-align: center;
-        }
-
-        input {
-            padding: 10px;
-            margin: 10px;
-            width: 200px;
         }
 
         button {
-            padding: 10px 25px;
             background-color: blue;
             color: white;
+            padding: 10px;
             border: none;
-            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h2>Signup Page</h2>
+    <h1>My E-Commerce Store</h1>
 
-    <input type="text" id="name" placeholder="Enter Name"><br>
+    <div class="product">
+        <h2>Mobile</h2>
+        <p>Price: ₹15000</p>
+        <button onclick="addCart('Mobile',15000)">Add to Cart</button>
+    </div>
 
-    <input type="email" id="email" placeholder="Enter Email"><br>
+    <div class="product">
+        <h2>Laptop</h2>
+        <p>Price: ₹45000</p>
+        <button onclick="addCart('Laptop',45000)">Add to Cart</button>
+    </div>
 
-    <input type="password" id="password" placeholder="Password"><br>
+    <div class="product">
+        <h2>Headphones</h2>
+        <p>Price: ₹1000</p>
+        <button onclick="addCart('Headphones',1000)">Add to Cart</button>
+    </div>
 
-    <button onclick="signup()">Signup</button>
-</div>
+    <h2>Shopping Cart</h2>
 
-<script>
-function signup() {
-    let user = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    };
+    <p id="cart"></p>
+    <h3 id="total">Total: ₹0</h3>
 
-    localStorage.setItem("user", JSON.stringify(user));
+    <script>
+        let total = 0;
 
-    alert("Signup Successful!");
-}
-</script>
+        function addCart(name, price) {
+            total = total + price;
+
+            document.getElementById("cart").innerHTML +=
+                name + " - ₹" + price + "<br>";
+
+            document.getElementById("total").innerHTML =
+                "Total: ₹" + total;
+        }
+    </script>
 
 </body>
 </html>
